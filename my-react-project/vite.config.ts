@@ -5,13 +5,30 @@ import autoprefixer from 'autoprefixer'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react({
+    babel: {
+      plugins: [
+        [
+          'babel-plugin-styled-components',
+          {
+            ssr: false,
+            displayName: true,
+            fileName: false,
+            minify: true,
+            transpileTemplateLiterals: true,
+            pure: true,
+          },
+        ],
+      ],
+    },
+  })],
   // 当修改了root 属性之后，需要修改publicDir属性
   root: path.join(__dirname, 'src'),
   publicDir: path.join(__dirname, 'public'),
   resolve: {
     alias: {
       '@': path.join(__dirname, './src'),
+      '~': path.join(__dirname, './')
     },
   },
   css: {
@@ -30,7 +47,7 @@ export default defineConfig({
     postcss: {
       plugins: [
         autoprefixer({
-          overrideBrowserslist: ['> 1%', 'last 2 versions', 'ie >= 7']
+          overrideBrowserslist: ['> 1%', 'last 2 versions', 'ie >= 10']
         })
       ],
     },

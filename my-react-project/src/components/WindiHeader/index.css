@@ -1,0 +1,11 @@
+.windi-header {
+  padding: 20px;
+  text-align: center;
+}
+
+.windi-header__title {
+  font-weight: bold;
+  font-size: 1.5rem; /* equivalent to text-2xl */
+  margin-bottom: 0.5rem; /* equivalent to mb-2 */
+  color: #ef4444; /* equivalent to text-red-500 */
+}

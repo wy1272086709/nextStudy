@@ -3,11 +3,14 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import Header from './components/Header'
+import Footer from './components/Footer'
+import { WindiHeader } from './components/WindiHeader'
 
 function App() {
   const [count, setCount] = useState(0)
   return (
     <>
+      <WindiHeader />
       <div>
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="logo" alt="Vite logo" />
@@ -29,6 +32,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+      <Footer>这是底部内容</Footer>
     </>
   )
 }

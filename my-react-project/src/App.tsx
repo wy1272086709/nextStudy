@@ -5,9 +5,10 @@ import './App.css'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import { WindiHeader } from './components/WindiHeader'
+import EslintDemo from './components/EslintDemo'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
   return (
     <>
       <WindiHeader />
@@ -20,6 +21,7 @@ function App() {
         </a>
       </div>
       <Header />
+      <EslintDemo />
       <h1>Vite + React</h1>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -34,7 +36,7 @@ function App() {
       </p>
       <Footer>这是底部内容</Footer>
     </>
-  )
+  );
 }
 
 export default App

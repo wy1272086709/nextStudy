@@ -2,26 +2,40 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import react from '@vitejs/plugin-react'
 import autoprefixer from 'autoprefixer'
+import viteEslint from 'vite-plugin-eslint'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react({
-    babel: {
-      plugins: [
-        [
-          'babel-plugin-styled-components',
-          {
-            ssr: false,
-            displayName: true,
-            fileName: false,
-            minify: true,
-            transpileTemplateLiterals: true,
-            pure: true,
-          },
+  plugins: [
+    react({
+      babel: {
+        plugins: [
+          [
+            'babel-plugin-styled-components',
+            {
+              ssr: false,
+              displayName: true,
+              fileName: false,
+              minify: true,
+              transpileTemplateLiterals: true,
+              pure: true,
+            },
+          ],
         ],
-      ],
-    },
-  })],
+      },
+    }),
+    viteEslint({
+      // Show warnings during development
+      emitWarning: true,
+      // Don't exclude any files
+      failOnWarning: false, // 关键：warning 不终止 dev 服务
+      failOnError: false,
+      // TS 项目需包含 ts/tsx 文件
+      include: ['src/**/*.ts', 'src/**/*.tsx', 'src/**/*.js', 'src/**/*.jsx'],
+      exclude: ['node_modules/**'],
+      formatter: 'stylish' // 终端友好的输出格式
+    }),
+  ],
   // 当修改了root 属性之后，需要修改publicDir属性
   root: path.join(__dirname, 'src'),
   publicDir: path.join(__dirname, 'public'),
@@ -30,6 +44,7 @@ export default defineConfig({
       '@': path.join(__dirname, './src'),
       '~': path.join(__dirname, './')
     },
+    extensions: ['.js', '.jsx', '.ts', '.tsx', '.json'],
   },
   css: {
     modules: {

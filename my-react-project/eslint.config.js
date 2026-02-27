@@ -17,6 +17,7 @@ export default tseslint.config(
   {
     files: ["**/*.{js,jsx,ts,tsx}"],
     rules: {
+      // 这一段很关键，如果没有这一段，则会报所有未使用的变量的错误,而不是warning
       "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_" }],
     }
   }

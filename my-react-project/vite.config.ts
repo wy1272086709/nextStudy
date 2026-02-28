@@ -4,6 +4,8 @@ import react from '@vitejs/plugin-react'
 import autoprefixer from 'autoprefixer'
 import viteEslint from 'vite-plugin-eslint'
 
+// viteEslint，代码运行的时候，才会产生warning
+
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [
